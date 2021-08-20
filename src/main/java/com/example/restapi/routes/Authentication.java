@@ -25,12 +25,11 @@ import java.util.Map;
 
 
 @RestController()
-public class Register {
+public class Authentication {
     @Autowired
     UserService userservice;
 
-    @Autowired
-    PostService postService;
+
 
     @PostMapping("/auth/register")
     public ResponseEntity< Map<String,String> > UserRegistration(@Valid @RequestBody  User newuser){
@@ -74,10 +73,7 @@ public class Register {
  }
 
 
-    @PostMapping("/post")
-    public post CreateStory( @RequestBody StoryRequest storyRequest) {
-        return postService.CreatePost(storyRequest);
-    }
+
 
 
 }
