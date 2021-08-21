@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,6 +46,18 @@ public class User {
     public void setPosts(Set<post> posts) {
         this.posts = posts;
     }
+
+    public byte[] getPicByte() {
+        return picByte;
+    }
+
+    public void setPicByte(byte[] picByte) {
+        this.picByte = picByte;
+    }
+
+
+    @Column(name = "picByte", length = 10000)
+    private byte[] picByte;
 
     @NotBlank
     @Column(name="email")

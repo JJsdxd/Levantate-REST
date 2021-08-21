@@ -3,6 +3,7 @@ package com.example.restapi.services;
 
 import com.example.restapi.entities.User;
 import com.example.restapi.exceptions.CustomAuthException;
+import com.example.restapi.pojos.ImageUpload;
 import com.example.restapi.repositories.UserRepository;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,6 +31,23 @@ public class UserService {
 
    public UserService(){}
 
+    public void  UpdateProfile(ImageUpload imgupload) throws CustomAuthException{
+
+        User cuser = userRepository.findById(imgupload.userid);
+        if(cuser!=null) {
+            cuser.setPicByte(imgupload.imagebytes);
+            userRepository.save(cuser);
+        }
+        else throw new CustomAuthException("UserNotFound");
+
+
+    }
+
+    public byte[] findImage(int id) {
+       User cuser = userRepository.findById(id);
+       return cuser.getPicByte();
+
+    }
 
 
        public List<User> getUsers(){
