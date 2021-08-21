@@ -18,10 +18,11 @@ public class Posts {
     PostService postService;
 
     @PostMapping("/post/create")
-    public String CreateStory(HttpServletRequest request, @RequestBody StoryRequest storyRequest) {
-        int user_id = (Integer) request.getAttribute("userId");
-        post post1= postService.CreatePost(storyRequest);
-        return "Authorized"+ user_id;
+    public post CreateStory(HttpServletRequest request, @RequestBody StoryRequest storyRequest) {
+        int token_user_id = (Integer) request.getAttribute("userId");
+        storyRequest.user_id = token_user_id;
+
+        return   postService.CreatePost(storyRequest);
     }
 
 
