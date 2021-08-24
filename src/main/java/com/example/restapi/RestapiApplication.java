@@ -21,6 +21,7 @@ public class RestapiApplication {
         registrationBean.setFilter(authfilter);
         registrationBean.addUrlPatterns("/post/*");
         registrationBean.addUrlPatterns("/upload");
+        registrationBean.addUrlPatterns("/profileimage");
         return registrationBean;
 
     }

@@ -31,27 +31,6 @@ public class Images {
     @Autowired
     UserService userService;
 
-    @PostMapping("/upload")
-    public ResponseEntity.BodyBuilder uplaodImage(HttpServletRequest request, @RequestParam("imageFile") MultipartFile file) throws IOException {
-        int token_user_id = (Integer) request.getAttribute("userId");
-      ImageUpload imgupload = new ImageUpload();
-      imgupload.userid=token_user_id;
-      imgupload.imagebytes =   compressBytes(file.getBytes());
-      userService.UpdateProfile(imgupload);
-      return ResponseEntity.status(HttpStatus.OK);
-
-
-    }
-
-
-    @GetMapping(path = { "/upload" })
-    public byte[] getImage(HttpServletRequest request) throws IOException {
-        int token_user_id = (Integer) request.getAttribute("userId");
-       byte[] imgbyte = userService.findImage(token_user_id);
-       byte[] newbyte= decompressBytes(imgbyte);
-               return newbyte;
-
-    }
     public static byte[] compressBytes(byte[] data) {
         Deflater deflater = new Deflater();
         deflater.setInput(data);
@@ -71,7 +50,6 @@ public class Images {
     }
 
 
-
     public static byte[] decompressBytes(byte[] data) {
         Inflater inflater = new Inflater();
         inflater.setInput(data);
@@ -87,5 +65,28 @@ public class Images {
         } catch (DataFormatException e) {
         }
         return outputStream.toByteArray();
+    }
+
+
+
+    @PostMapping("/upload")
+    public ResponseEntity.BodyBuilder uplaodImage(HttpServletRequest request, @RequestParam("imageFile") MultipartFile file) throws IOException {
+        int token_user_id = (Integer) request.getAttribute("userId");
+        ImageUpload imgupload = new ImageUpload();
+        imgupload.userid = token_user_id;
+        imgupload.imagebytes = compressBytes(file.getBytes());
+        userService.UpdateProfile(imgupload);
+        return ResponseEntity.status(HttpStatus.OK);
+
+
+    }
+
+    @GetMapping(path = {"/profileimage"})
+    public byte[] getImage(HttpServletRequest request) throws IOException {
+        int token_user_id = (Integer) request.getAttribute("userId");
+        byte[] imgbyte = userService.findImage(token_user_id);
+        byte[] newbyte = decompressBytes(imgbyte);
+        return newbyte;
+
     }
 }

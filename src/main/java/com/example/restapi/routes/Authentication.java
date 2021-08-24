@@ -30,24 +30,22 @@ public class Authentication {
     UserService userservice;
 
 
-
     @PostMapping("/auth/register")
-    public ResponseEntity< Map<String,String> > UserRegistration(@Valid @RequestBody  User newuser){
-     User create1 = new User();
-     create1.setUsername(newuser.getUsername());
+    public ResponseEntity<Map<String, String>> UserRegistration(@Valid @RequestBody User newuser) {
+        User create1 = new User();
+        create1.setUsername(newuser.getUsername());
         create1.setEmail(newuser.getEmail());
-       String hashedp = BCrypt.hashpw(newuser.getPassword(),BCrypt.gensalt(10));
-       create1.setPassword(hashedp);
-     User confirmed = userservice.CreateUser(create1);
-     return new ResponseEntity<>(JwtToken(confirmed), HttpStatus.OK);
-
+        String hashedp = BCrypt.hashpw(newuser.getPassword(), BCrypt.gensalt(10));
+        create1.setPassword(hashedp);
+        User confirmed = userservice.CreateUser(create1);
+        return new ResponseEntity<>(JwtToken(confirmed), HttpStatus.OK);
 
 
     }
 
     @PostMapping("/auth/login")
-    public ResponseEntity< Map<String,String> > UserLogin(@RequestBody LoginRequest logr) {
-        User loguser= new User();
+    public ResponseEntity<Map<String, String>> UserLogin(@RequestBody LoginRequest logr) {
+        User loguser = new User();
         loguser.setUsername(logr.username);
         loguser.setPassword(logr.password);
         User t1 = userservice.LoginUser(loguser);
@@ -57,23 +55,20 @@ public class Authentication {
     }
 
 
- private Map<String,String> JwtToken(User user){
+    private Map<String, String> JwtToken(User user) {
         long current_time = System.currentTimeMillis();
         String token = Jwts.builder().signWith(SignatureAlgorithm.HS256, Secrets.API_KEY)
                 .setIssuedAt(new Date(current_time))
-                .setExpiration(new Date( current_time+Secrets.TOKEN_VALIDITY))
-                .claim("user_id",user.getId())
-                .claim("username",user.getUsername())
-                .claim("email",user.getEmail())
+                .setExpiration(new Date(current_time + Secrets.TOKEN_VALIDITY))
+                .claim("user_id", user.getId())
+                .claim("username", user.getUsername())
+                .claim("email", user.getEmail())
                 .compact();
-        Map<String,String> map = new HashMap<>();
-        map.put("token",token);
+        Map<String, String> map = new HashMap<>();
+        map.put("token", token);
         return map;
 
- }
-
-
-
+    }
 
 
 }

@@ -1,20 +1,9 @@
 package com.example.restapi.entities;
-
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.http.HttpStatus;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 @Entity
@@ -39,21 +28,6 @@ public class User {
     @JoinColumn(name="user_id")
     private Set<post> posts;
 
-    public Set<post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(Set<post> posts) {
-        this.posts = posts;
-    }
-
-    public byte[] getPicByte() {
-        return picByte;
-    }
-
-    public void setPicByte(byte[] picByte) {
-        this.picByte = picByte;
-    }
 
 
     @Column(name = "picByte", length = 10000)
@@ -72,6 +46,21 @@ public class User {
 
 
 
+    public Set<post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Set<post> posts) {
+        this.posts = posts;
+    }
+
+    public byte[] getPicByte() {
+        return picByte;
+    }
+
+    public void setPicByte(byte[] picByte) {
+        this.picByte = picByte;
+    }
 
 
     public int getId() {
