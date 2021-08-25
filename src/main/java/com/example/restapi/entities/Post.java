@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="stories")
-public class post {
+public class Post {
 
     public User getUser() {
         return user;

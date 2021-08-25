@@ -2,10 +2,7 @@ package com.example.restapi.routes;
 
 
 import com.example.restapi.Secrets;
-import com.example.restapi.entities.post;
 import com.example.restapi.pojos.LoginRequest;
-import com.example.restapi.pojos.StoryRequest;
-import com.example.restapi.services.PostService;
 import com.example.restapi.services.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

@@ -26,7 +26,7 @@ public class User {
     @JsonIgnore
     @OneToMany
     @JoinColumn(name="user_id")
-    private Set<post> posts;
+    private Set<Post> posts;
 
 
 
@@ -46,11 +46,11 @@ public class User {
 
 
 
-    public Set<post> getPosts() {
+    public Set<Post> getPosts() {
         return posts;
     }
 
-    public void setPosts(Set<post> posts) {
+    public void setPosts(Set<Post> posts) {
         this.posts = posts;
     }
 
