@@ -40,6 +40,8 @@ public class User {
 
 
 
+
+    @JsonIgnore
     @Column(name = "password")
     @Size(min =7,message = "Your password should contain atleast 7 characters.")
     private String password;

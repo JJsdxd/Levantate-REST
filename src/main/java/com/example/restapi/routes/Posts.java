@@ -2,6 +2,7 @@ package com.example.restapi.routes;
 import com.example.restapi.entities.Comments;
 import com.example.restapi.entities.Post;
 import com.example.restapi.pojos.CommentRequest;
+import com.example.restapi.pojos.DetailedPost;
 import com.example.restapi.pojos.StoryRequest;
 import com.example.restapi.services.CommentService;
 import com.example.restapi.services.PostService;
@@ -11,6 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -39,8 +43,14 @@ public class Posts {
     }
 
     @GetMapping("/post/")
-    public Post GetPost(HttpServletRequest request,@RequestParam int storyid){
-        return postService.getPost(storyid);
+    public Map<String,Object> GetPost(HttpServletRequest request, @RequestParam int storyid){
+        DetailedPost post1 =  postService.getPost(storyid);
+        Map<String, Object> map = new HashMap<>();
+        map.put("detailedpost", post1);
+
+        return map;
+
+
     }
 
     @PostMapping("post/comment/create")
@@ -48,6 +58,7 @@ public class Posts {
 
         int token_user_id = (Integer) request.getAttribute("userId");
         return commentService.createComment(commentRequest,token_user_id);
+
 
     }
 

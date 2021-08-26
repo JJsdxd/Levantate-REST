@@ -20,6 +20,7 @@ public class Comments {
     @JoinColumn(name ="story_id")
     private Post post;
 
+
     @Column(name = "user_id")
     private int user_id;
 

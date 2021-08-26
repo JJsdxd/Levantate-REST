@@ -2,14 +2,17 @@ package com.example.restapi.services;
 
 
 import com.example.restapi.entities.Comments;
+import com.example.restapi.entities.Post;
 import com.example.restapi.pojos.CommentRequest;
 import com.example.restapi.repositories.CommentRepository;
 import com.example.restapi.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Calendar;
+import java.util.List;
 
 @Service
 public class CommentService {
@@ -31,4 +34,12 @@ public Comments createComment(CommentRequest commentRequest,int userid){
     return commentRepository.save(cmt1);
 
 }
+
+public List<Comments> GetComments( Post post){
+    return commentRepository.getAllByPost(post);
+
+}
+
+
+
 }
