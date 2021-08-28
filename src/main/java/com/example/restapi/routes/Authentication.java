@@ -3,6 +3,7 @@ package com.example.restapi.routes;
 
 import com.example.restapi.Secrets;
 import com.example.restapi.pojos.LoginRequest;
+import com.example.restapi.services.ChallengeService;
 import com.example.restapi.services.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -26,6 +27,9 @@ public class Authentication {
     @Autowired
     UserService userservice;
 
+    @Autowired
+    ChallengeService challengeService;
+
 
     @PostMapping("/auth/register")
     public ResponseEntity<Map<String, String>> UserRegistration(@Valid @RequestBody User newuser) {
@@ -35,6 +39,9 @@ public class Authentication {
         String hashedp = BCrypt.hashpw(newuser.getPassword(), BCrypt.gensalt(10));
         create1.setPassword(hashedp);
         User confirmed = userservice.CreateUser(create1);
+        System.out.println(confirmed.getId());
+        challengeService.challenge_init(confirmed.getId());
+
         return new ResponseEntity<>(JwtToken(confirmed), HttpStatus.OK);
 
 

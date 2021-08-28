@@ -29,6 +29,13 @@ public class User {
     private Set<Post> posts;
 
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private statust status;
+
+
+
+
 
     @Column(name = "picByte", length = 10000)
     private byte[] picByte;
