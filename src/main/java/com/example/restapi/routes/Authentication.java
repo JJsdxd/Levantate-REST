@@ -32,14 +32,13 @@ public class Authentication {
 
 
     @PostMapping("/auth/register")
-    public ResponseEntity<Map<String, String>> UserRegistration(@Valid @RequestBody User newuser) {
+    public ResponseEntity<Map<String, String>> UserRegistration( @RequestBody User newuser) {
         User create1 = new User();
         create1.setUsername(newuser.getUsername());
         create1.setEmail(newuser.getEmail());
         String hashedp = BCrypt.hashpw(newuser.getPassword(), BCrypt.gensalt(10));
         create1.setPassword(hashedp);
         User confirmed = userservice.CreateUser(create1);
-        System.out.println(confirmed.getId());
         challengeService.challenge_init(confirmed.getId());
 
         return new ResponseEntity<>(JwtToken(confirmed), HttpStatus.OK);

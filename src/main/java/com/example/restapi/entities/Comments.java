@@ -16,12 +16,13 @@ public class Comments {
     private int id;
 
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name ="story_id")
     private Post post;
 
 
-    @Column(name = "user_id")
+
+    @Column(name = "userid")
     private int user_id;
 
     @Column(name = "comment_text")

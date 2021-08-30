@@ -44,12 +44,14 @@ public class UserService {
 
 
     public User LoginUser(User user) throws CustomAuthException {
-        List<User> userl = userRepository.findByUsername(user.getUsername());
+        List<User> userl = userRepository.findByUsernameIs(user.getUsername());
+
         if (userl.isEmpty()) {
             throw new CustomAuthException("User Not Found");
         }
         for (User u : userl) {
-            if (!BCrypt.checkpw(user.getPassword(), u.getPassword())) {
+            System.out.println(u.getUsername());
+            if (!BCrypt.checkpw(user.getPassword(),u.getPassword())) {
                 throw new CustomAuthException("Incorrect Password");
             }
         }
@@ -58,8 +60,8 @@ public class UserService {
 
 
     public User CreateUser(User user) throws CustomAuthException {
-        List<User> test1 = userRepository.findByEmail(user.getEmail());
-        List<User> tests = userRepository.findByUsername(user.getUsername());
+        List<User> test1 = userRepository.findByEmailIs(user.getEmail());
+        List<User> tests = userRepository.findByUsernameIs(user.getUsername());
         if (test1.size() != 0) {
             throw new CustomAuthException("Email Already in use");
         }
