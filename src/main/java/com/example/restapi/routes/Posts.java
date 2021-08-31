@@ -1,10 +1,12 @@
 package com.example.restapi.routes;
 import com.example.restapi.entities.Comments;
+import com.example.restapi.entities.Likes;
 import com.example.restapi.entities.Post;
 import com.example.restapi.pojos.CommentRequest;
 import com.example.restapi.pojos.DetailedPost;
 import com.example.restapi.pojos.StoryRequest;
 import com.example.restapi.services.CommentService;
+import com.example.restapi.services.LikeService;
 import com.example.restapi.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +27,10 @@ public class Posts {
 
     @Autowired
     CommentService commentService;
+
+    @Autowired
+    LikeService likeService;
+
 
     @PostMapping("/post/create")
     public ResponseEntity<String> CreateStory(HttpServletRequest request, @RequestBody StoryRequest storyRequest) {
@@ -60,6 +66,12 @@ public class Posts {
         return commentService.createComment(commentRequest,token_user_id);
 
 
+    }
+
+    @PostMapping("post/likes/")
+    public void LikePost(HttpServletRequest request,@RequestParam int storyid){
+        int token_user_id = (Integer) request.getAttribute("userId");
+         likeService.EditLike(token_user_id,storyid);
     }
 
 

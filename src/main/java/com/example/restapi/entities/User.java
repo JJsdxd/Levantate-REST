@@ -16,7 +16,9 @@ public class User {
     private int id;
 
 
-
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private Likes likes;
 
     @NotBlank
     @Column(name="username")

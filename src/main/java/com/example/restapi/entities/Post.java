@@ -20,7 +20,7 @@ public class Post {
         this.user = user;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -52,6 +52,9 @@ public class Post {
         this.storydate = storydate;
     }
 
+
+
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -62,7 +65,7 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="story_id")
-    private long id;
+    private int id;
 
     @Column(name ="story_title")
     private String story_title;
@@ -74,5 +77,9 @@ public class Post {
     @Temporal(TemporalType.DATE)
     private Date storydate;
 
+
+    @OneToOne
+    @JoinColumn(name = "story_id")
+    private Likes likes;
 
 }

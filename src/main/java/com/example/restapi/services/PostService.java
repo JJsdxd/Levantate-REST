@@ -49,7 +49,7 @@ public class PostService {
     }
 
     @Transactional
-    public void DeletePost(@RequestParam long story_id, int user_id) {
+    public void DeletePost(@RequestParam int story_id, int user_id) {
         Post c_post = postRepository.findById(story_id);
         int userid = c_post.getUser().getId();
 
