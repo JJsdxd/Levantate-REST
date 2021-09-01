@@ -13,9 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>restapi</name>
     <description>restapi</description>
-    <properties>
-        <java.version>11</java.version>
-    </properties>
+
     <dependencies>
 
         <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
