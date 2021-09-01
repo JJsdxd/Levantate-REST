@@ -8,6 +8,7 @@ import com.example.restapi.pojos.CommentShort;
 import com.example.restapi.pojos.DetailedPost;
 import com.example.restapi.pojos.StoryRequest;
 import com.example.restapi.repositories.CommentRepository;
+import com.example.restapi.repositories.LikesRepository;
 import com.example.restapi.repositories.PostRepository;
 import com.example.restapi.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,9 @@ public class PostService {
 
     @Autowired
     CommentRepository commentRepository;
+
+    @Autowired
+    LikesRepository likesRepository;
 
 
 
@@ -66,6 +70,7 @@ public class PostService {
         Post post1 =  postRepository.findById(storyid);
         List<Comments> comments = commentRepository.getAllByPost(post1);
         DetailedPost dpost = new DetailedPost();
+        dpost.setLike_count(likesRepository.count());
         dpost.setPost_date(post1.getStorydate());
         dpost.setPost_desc(post1.getStory_desc());
         dpost.setPost_title(post1.getStory_title());

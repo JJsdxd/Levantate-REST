@@ -9,8 +9,19 @@ public class DetailedPost {
     private String Post_user;
     private Date Post_date;
 
+
+    private Long like_count;
+
     private List<CommentShort> comments;
 
+
+    public Long getLike_count() {
+        return like_count;
+    }
+
+    public void setLike_count(Long like_count) {
+        this.like_count = like_count;
+    }
     public String getPost_title() {
         return Post_title;
     }
