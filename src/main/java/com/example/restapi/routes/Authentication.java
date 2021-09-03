@@ -11,6 +11,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +32,7 @@ public class Authentication {
     ChallengeService challengeService;
 
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/auth/register")
     public ResponseEntity<Map<String, String>> UserRegistration( @RequestBody User newuser) {
         User create1 = new User();
@@ -46,6 +48,7 @@ public class Authentication {
 
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/auth/login")
     public ResponseEntity<Map<String, String>> UserLogin(@RequestBody LoginRequest logr) {
         User loguser = new User();
