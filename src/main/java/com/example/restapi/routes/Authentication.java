@@ -32,7 +32,7 @@ public class Authentication {
     ChallengeService challengeService;
 
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin()
     @PostMapping("/auth/register")
     public ResponseEntity<Map<String, String>> UserRegistration( @RequestBody User newuser) {
         User create1 = new User();
@@ -48,7 +48,7 @@ public class Authentication {
 
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin()
     @PostMapping("/auth/login")
     public ResponseEntity<Map<String, String>> UserLogin(@RequestBody LoginRequest logr) {
         User loguser = new User();
