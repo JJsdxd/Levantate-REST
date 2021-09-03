@@ -4,6 +4,7 @@ import com.example.restapi.entities.Likes;
 import com.example.restapi.entities.Post;
 import com.example.restapi.pojos.CommentRequest;
 import com.example.restapi.pojos.DetailedPost;
+import com.example.restapi.pojos.SimplePost;
 import com.example.restapi.pojos.StoryRequest;
 import com.example.restapi.services.CommentService;
 import com.example.restapi.services.LikeService;
@@ -48,7 +49,7 @@ public class Posts {
         return new ResponseEntity<>("Story with id"+story_id+"deleted succesfully", HttpStatus.OK);
     }
 
-    @GetMapping("/post/")
+    @GetMapping("/post/get/")
     public Map<String,Object> GetPost(HttpServletRequest request, @RequestParam int storyid){
         DetailedPost post1 =  postService.getPost(storyid);
         Map<String, Object> map = new HashMap<>();
@@ -74,6 +75,15 @@ public class Posts {
          likeService.EditLike(token_user_id,storyid);
     }
 
+    @GetMapping("post/")
+    public Map<String,Object> GetAllPost(HttpServletRequest request){
+        List<SimplePost> post_list =  postService.PostList();
+        Map<String, Object> map = new HashMap<>();
+        map.put("ListOfPosts", post_list);
+
+        return map;
+
+    }
 
 
 }

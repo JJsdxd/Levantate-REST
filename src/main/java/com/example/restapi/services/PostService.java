@@ -6,6 +6,7 @@ import com.example.restapi.entities.Post;
 import com.example.restapi.exceptions.CustomAuthException;
 import com.example.restapi.pojos.CommentShort;
 import com.example.restapi.pojos.DetailedPost;
+import com.example.restapi.pojos.SimplePost;
 import com.example.restapi.pojos.StoryRequest;
 import com.example.restapi.repositories.CommentRepository;
 import com.example.restapi.repositories.LikesRepository;
@@ -87,6 +88,22 @@ public class PostService {
         dpost.setComments(commentl);
         return dpost;
 
+    }
+
+    public List<SimplePost> PostList(){
+        List<Post> post_list = postRepository.findAllByOrderByStorydateDesc();
+        List<SimplePost> new_list = new ArrayList<>();
+        for(Post p:post_list){
+            SimplePost simplePost = new SimplePost();
+            simplePost.setPost_id(p.getId());
+            simplePost.setPost_title(p.getStory_title());
+            simplePost.setPost_desc(p.getStory_desc());
+            simplePost.setPost_user(p.getUser().getUsername());
+            simplePost.setPost_date(p.getStorydate());
+            new_list.add(simplePost);
+
+        }
+        return new_list;
     }
 
 }
