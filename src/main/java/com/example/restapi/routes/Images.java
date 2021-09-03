@@ -81,6 +81,15 @@ public class Images {
 
     }
 
+    @GetMapping("/testimg")
+    public byte[] getImagetest(HttpServletRequest request) throws IOException {
+
+        byte[] imgbyte = userService.findImage(1);
+        byte[] newbyte = decompressBytes(imgbyte);
+        return newbyte;
+
+    }
+
     @GetMapping(path = {"/profileimage"})
     public byte[] getImage(HttpServletRequest request) throws IOException {
         int token_user_id = (Integer) request.getAttribute("userId");
