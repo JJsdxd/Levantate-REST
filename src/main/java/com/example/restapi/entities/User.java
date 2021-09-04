@@ -30,6 +30,18 @@ public class User {
     @JoinColumn(name="user_id")
     private Set<Post> posts;
 
+    @JsonIgnore
+    @OneToMany
+    @JoinColumn(name="user_id")
+    private Set<Diary> diary;
+
+    public Set<Diary> getDiary() {
+        return diary;
+    }
+
+    public void setDiary(Set<Diary> diary) {
+        this.diary = diary;
+    }
 
     @OneToOne
     @JoinColumn(name = "user_id")
