@@ -23,6 +23,8 @@ public class Challenge {
     ChallengeService challengeService;
 
 
+
+    @CrossOrigin()
     @GetMapping("/challenge")
     public Map<String,Object> GetAllChallenges(HttpServletRequest request) {
         int token_user_id = (Integer) request.getAttribute("userId");
@@ -32,6 +34,8 @@ public class Challenge {
 
         return map;
     }
+
+
 
     @PostMapping("challenge/create")
     public ResponseEntity<String> Createchallenge(HttpServletRequest request, @RequestBody ChallengeRequest challengeRequest){

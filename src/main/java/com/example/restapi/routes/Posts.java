@@ -33,6 +33,7 @@ public class Posts {
     LikeService likeService;
 
 
+    @CrossOrigin()
     @PostMapping("/post/create")
     public ResponseEntity<String> CreateStory(HttpServletRequest request, @RequestBody StoryRequest storyRequest) {
         int token_user_id = (Integer) request.getAttribute("userId");
@@ -41,6 +42,8 @@ public class Posts {
         return   new ResponseEntity<>("Created Sucesfully", HttpStatus.OK);
     }
 
+
+    @CrossOrigin()
     @PostMapping("post/delete")
     public ResponseEntity<String> DeleteStory(HttpServletRequest request, @RequestParam int story_id){
         System.out.println(story_id);
@@ -49,6 +52,7 @@ public class Posts {
         return new ResponseEntity<>("Story with id"+story_id+"deleted succesfully", HttpStatus.OK);
     }
 
+    @CrossOrigin()
     @GetMapping("/post/get/")
     public Map<String,Object> GetPost(HttpServletRequest request, @RequestParam int storyid){
         DetailedPost post1 =  postService.getPost(storyid);
@@ -60,6 +64,7 @@ public class Posts {
 
     }
 
+    @CrossOrigin()
     @PostMapping("post/comment/create")
     public Comments CreateCom(HttpServletRequest request, @RequestBody CommentRequest commentRequest){
 
