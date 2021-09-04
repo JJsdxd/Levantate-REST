@@ -24,7 +24,7 @@ public class RestapiApplication {
         registrationBean.addUrlPatterns("/profileimage");
         registrationBean.addUrlPatterns("/challenge/*");
         registrationBean.addUrlPatterns("/dashboard");
-        registrationBean.addUrlPatterns("/diary/");
+        registrationBean.addUrlPatterns("/diary/*");
         return registrationBean;
 
     }
