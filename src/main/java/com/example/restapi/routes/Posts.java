@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +36,8 @@ public class Posts {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/post/create")
-    public ResponseEntity<String> CreateStory(HttpServletRequest request, @RequestBody StoryRequest storyRequest) {
+    public ResponseEntity<String> CreateStory(HttpServletRequest request, @RequestBody StoryRequest storyRequest, ) {
+
         int token_user_id = (Integer) request.getAttribute("userId");
         storyRequest.user_id = token_user_id;
         postService.CreatePost(storyRequest);

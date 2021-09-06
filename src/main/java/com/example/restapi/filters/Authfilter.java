@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class Authfilter extends GenericFilterBean {
 
-    
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httprequest = (HttpServletRequest) request;
@@ -47,6 +47,10 @@ public class Authfilter extends GenericFilterBean {
             httpResponse.sendError(HttpStatus.FORBIDDEN.value(),"Authorization token must be provided");
             return;
         }
+        HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+        httpServletResponse.setHeader("Access-Control-Allow-Origin", " http://127.0.0.1:3000/");
+        httpServletResponse.setHeader("Access-Control-Allow-Methods","POST");
+        httpServletResponse.setHeader("Access-Control-Allow-Headers","Content-Type, Authorization");
         chain.doFilter(request,response);
 
 
