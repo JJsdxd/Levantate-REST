@@ -33,7 +33,7 @@ public class Posts {
     LikeService likeService;
 
 
-    @CrossOrigin()
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/post/create")
     public ResponseEntity<String> CreateStory(HttpServletRequest request, @RequestBody StoryRequest storyRequest) {
         int token_user_id = (Integer) request.getAttribute("userId");

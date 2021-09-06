@@ -17,8 +17,7 @@ import java.io.IOException;
 
 public class Authfilter extends GenericFilterBean {
 
-
-    @CrossOrigin
+    
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httprequest = (HttpServletRequest) request;
