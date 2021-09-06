@@ -36,7 +36,7 @@ public class Posts {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/post/create")
-    public ResponseEntity<String> CreateStory(HttpServletRequest request, @RequestBody StoryRequest storyRequest, ) {
+    public ResponseEntity<String> CreateStory(HttpServletRequest request, @RequestBody StoryRequest storyRequest) {
 
         int token_user_id = (Integer) request.getAttribute("userId");
         storyRequest.user_id = token_user_id;
