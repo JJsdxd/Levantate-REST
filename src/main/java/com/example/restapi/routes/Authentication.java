@@ -29,6 +29,8 @@ public class Authentication {
     ChallengeService challengeService;
 
 
+
+    //User registration
     @CrossOrigin()
     @PostMapping("/auth/register")
     public ResponseEntity<Map<String, String>> UserRegistration( @RequestBody User newuser) {
@@ -47,6 +49,8 @@ public class Authentication {
 
 
 
+
+    //User login
     @CrossOrigin()
     @PostMapping("/auth/login")
     public ResponseEntity<Map<String, String>> UserLogin(@RequestBody LoginRequest logr) {
@@ -60,6 +64,7 @@ public class Authentication {
     }
 
 
+    //Generating  a JWT token for the user
     private Map<String, String> JwtToken(User user) {
         long current_time = System.currentTimeMillis();
         String token = Jwts.builder().signWith(SignatureAlgorithm.HS256, Secrets.API_KEY)

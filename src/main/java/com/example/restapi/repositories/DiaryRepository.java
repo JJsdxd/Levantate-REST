@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DiaryRepository  extends JpaRepository<Diary,Integer> {
+public interface DiaryRepository extends JpaRepository<Diary, Integer> {
 
     List<Diary> findAllByUser(User user);
 

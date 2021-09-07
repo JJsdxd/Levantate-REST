@@ -8,6 +8,7 @@ import com.example.restapi.repositories.UserRepository;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -51,7 +52,7 @@ public class UserService {
         }
         for (User u : userl) {
             System.out.println(u.getUsername());
-            if (!BCrypt.checkpw(user.getPassword(),u.getPassword())) {
+            if (!BCrypt.checkpw(user.getPassword(), u.getPassword())) {
                 throw new CustomAuthException("Incorrect Password");
             }
         }

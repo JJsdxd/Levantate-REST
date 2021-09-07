@@ -9,10 +9,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PostRepository extends JpaRepository<Post,Integer> {
+public interface PostRepository extends JpaRepository<Post, Integer> {
 
     Post findById(int story_id);
-     void deleteById(int story_id);
-     List<Post> findAllByOrderByStorydateDesc();
+
+    void deleteById(int story_id);
+
+    List<Post> findAllByOrderByStorydateDesc();
 
 }

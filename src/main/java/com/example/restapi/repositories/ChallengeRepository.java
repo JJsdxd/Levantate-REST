@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ChallengeRepository extends JpaRepository<Challenges,Integer> {
+public interface ChallengeRepository extends JpaRepository<Challenges, Integer> {
 
     List<Challenges> findAll();
 

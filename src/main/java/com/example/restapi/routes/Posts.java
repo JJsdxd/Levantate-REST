@@ -1,4 +1,5 @@
 package com.example.restapi.routes;
+
 import com.example.restapi.entities.Comments;
 import com.example.restapi.entities.Likes;
 import com.example.restapi.entities.Post;
@@ -15,7 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,30 +35,34 @@ public class Posts {
     LikeService likeService;
 
 
+    //Create a new Post
     @CrossOrigin()
     @PostMapping("/post/create")
     public ResponseEntity<String> CreateStory(HttpServletRequest request, @RequestBody StoryRequest storyRequest) {
 
+        //Getting the user id from the jwt token.
         int token_user_id = (Integer) request.getAttribute("userId");
         storyRequest.user_id = token_user_id;
         postService.CreatePost(storyRequest);
-        return   new ResponseEntity<>("Created Sucesfully", HttpStatus.OK);
+        return new ResponseEntity<>("Created Sucesfully", HttpStatus.OK);
     }
 
 
     @CrossOrigin()
     @PostMapping("post/delete")
-    public ResponseEntity<String> DeleteStory(HttpServletRequest request, @RequestParam int story_id){
+    public ResponseEntity<String> DeleteStory(HttpServletRequest request, @RequestParam int story_id) {
         System.out.println(story_id);
         int token_user_id = (Integer) request.getAttribute("userId");
-        postService.DeletePost(story_id,token_user_id);
-        return new ResponseEntity<>("Story with id"+story_id+"deleted succesfully", HttpStatus.OK);
+        postService.DeletePost(story_id, token_user_id);
+        return new ResponseEntity<>("Story with id" + story_id + "deleted succesfully", HttpStatus.OK);
     }
 
+
+    //Endpoint for getting  a specific post
     @CrossOrigin()
     @GetMapping("/post/get/")
-    public Map<String,Object> GetPost(HttpServletRequest request, @RequestParam int storyid){
-        DetailedPost post1 =  postService.getPost(storyid);
+    public Map<String, Object> GetPost(HttpServletRequest request, @RequestParam int storyid) {
+        DetailedPost post1 = postService.getPost(storyid);
         Map<String, Object> map = new HashMap<>();
         map.put("detailedpost", post1);
 
@@ -66,25 +71,31 @@ public class Posts {
 
     }
 
+
+    //Endpoint for creating  a new comment.
     @CrossOrigin()
     @PostMapping("post/comment/create")
-    public Comments CreateCom(HttpServletRequest request, @RequestBody CommentRequest commentRequest){
+    public Comments CreateCom(HttpServletRequest request, @RequestBody CommentRequest commentRequest) {
 
         int token_user_id = (Integer) request.getAttribute("userId");
-        return commentService.createComment(commentRequest,token_user_id);
+        return commentService.createComment(commentRequest, token_user_id);
 
 
     }
 
+
+    //Like / Dislike a Post.
     @PostMapping("post/likes/")
-    public void LikePost(HttpServletRequest request,@RequestParam int storyid){
+    public void LikePost(HttpServletRequest request, @RequestParam int storyid) {
         int token_user_id = (Integer) request.getAttribute("userId");
-         likeService.EditLike(token_user_id,storyid);
+        likeService.EditLike(token_user_id, storyid);
     }
 
+
+    //Get all Recent Posts.
     @GetMapping("post/")
-    public Map<String,Object> GetAllPost(HttpServletRequest request){
-        List<SimplePost> post_list =  postService.PostList();
+    public Map<String, Object> GetAllPost(HttpServletRequest request) {
+        List<SimplePost> post_list = postService.PostList();
         Map<String, Object> map = new HashMap<>();
         map.put("ListOfPosts", post_list);
 

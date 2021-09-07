@@ -25,25 +25,22 @@ public class LikeService {
     PostRepository postRepository;
 
 
+    public void EditLike(int userid, int storyid) {
+        Boolean test = likesRepository.existsByPostAndUser(postRepository.findById(storyid), userRepository.findById(userid));
+        System.out.println(test);
 
+        if (test) {
+            likesRepository.deleteByPostAndUser(postRepository.findById(storyid), userRepository.findById(userid));
 
-    public void EditLike(int userid,int storyid){
-  Boolean test = likesRepository.existsByPostAndUser(postRepository.findById(storyid),userRepository.findById(userid));
-  System.out.println(test);
+        } else {
+            System.out.println("tetst");
+            Likes like2 = new Likes();
+            like2.setPost(postRepository.findById(storyid));
+            like2.setUser(userRepository.findById(userid));
+            System.out.println(like2);
+            likesRepository.save(like2);
 
-  if(test ){
-      likesRepository.deleteByPostAndUser(postRepository.findById(storyid),userRepository.findById(userid));
-
-  }
-  else{
-      System.out.println("tetst");
-      Likes like2 = new Likes();
-      like2 .setPost(postRepository.findById(storyid));
-      like2.setUser(userRepository.findById(userid));
-      System.out.println(like2);
-       likesRepository.save(like2);
-
-  }
+        }
 
     }
 }

@@ -27,25 +27,24 @@ public class DiaryService {
     DiaryRepository diaryRepository;
 
     @Transactional
-    public Diary CreateDiary( DiaryRequest diaryRequest, int user_id) {
+    public Diary CreateDiary(DiaryRequest diaryRequest, int user_id) {
         User user = userRepository.findById(user_id);
         Diary diary = new Diary();
         diary.setDiary_title(diaryRequest.getTitle());
         diary.setDiary_desc(diaryRequest.getDesc());
-        java.util.Date date=new java.util.Date();
+        java.util.Date date = new java.util.Date();
         diary.setDiary_date(date);
         diary.setUser(userRepository.findById(user_id));
-
 
 
         return diaryRepository.save(diary);
     }
 
     @Transactional
-    public List<DiaryResponse> GetAllDiary(int user_id){
+    public List<DiaryResponse> GetAllDiary(int user_id) {
         List<Diary> diary_list = diaryRepository.findAllByUser(userRepository.findById(user_id));
         List<DiaryResponse> new_list = new ArrayList<>();
-        for(Diary u: diary_list){
+        for (Diary u : diary_list) {
             DiaryResponse diary = new DiaryResponse();
             diary.setTitle(u.getDiary_title());
             diary.setDesc(u.getDiary_desc());

@@ -23,10 +23,9 @@ public class Challenge {
     ChallengeService challengeService;
 
 
-
     @CrossOrigin()
     @GetMapping("/challenge")
-    public Map<String,Object> GetAllChallenges(HttpServletRequest request) {
+    public Map<String, Object> GetAllChallenges(HttpServletRequest request) {
         int token_user_id = (Integer) request.getAttribute("userId");
         List<UserChallenges> challenge_list = challengeService.GetChallenges(token_user_id);
         Map<String, Object> map = new HashMap<>();
@@ -36,13 +35,11 @@ public class Challenge {
     }
 
 
-
     @PostMapping("challenge/create")
-    public ResponseEntity<String> Createchallenge(HttpServletRequest request, @RequestBody ChallengeRequest challengeRequest){
+    public ResponseEntity<String> Createchallenge(HttpServletRequest request, @RequestBody ChallengeRequest challengeRequest) {
         challengeService.CreateChallenge(challengeRequest);
         return new ResponseEntity<>("Created Succesfully", HttpStatus.OK);
     }
-
 
 
 }

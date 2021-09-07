@@ -8,10 +8,7 @@ import com.example.restapi.repositories.CommentRepository;
 import com.example.restapi.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.Calendar;
 import java.util.List;
 
 @Service
@@ -24,22 +21,21 @@ public class CommentService {
     CommentRepository commentRepository;
 
 
-public Comments createComment(CommentRequest commentRequest,int userid){
-    Comments cmt1 = new Comments();
-    cmt1.setUser_id(userid);
-    cmt1.setComment_text(commentRequest.comment_text);
-    cmt1.setPost(postRepository.findById(commentRequest.story_id));
-    java.util.Date date=new java.util.Date();
-    cmt1.setComment_date(date);
-    return commentRepository.save(cmt1);
+    public Comments createComment(CommentRequest commentRequest, int userid) {
+        Comments cmt1 = new Comments();
+        cmt1.setUser_id(userid);
+        cmt1.setComment_text(commentRequest.comment_text);
+        cmt1.setPost(postRepository.findById(commentRequest.story_id));
+        java.util.Date date = new java.util.Date();
+        cmt1.setComment_date(date);
+        return commentRepository.save(cmt1);
 
-}
+    }
 
-public List<Comments> GetComments( Post post){
-    return commentRepository.getAllByPost(post);
+    public List<Comments> GetComments(Post post) {
+        return commentRepository.getAllByPost(post);
 
-}
-
+    }
 
 
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface StatusRepository extends JpaRepository<statust,Integer> {
-     List<statust> findByUser(User user);
+public interface StatusRepository extends JpaRepository<statust, Integer> {
+    List<statust> findByUser(User user);
 
 }

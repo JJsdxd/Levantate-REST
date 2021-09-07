@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CommentRepository extends JpaRepository<Comments,Integer> {
+public interface CommentRepository extends JpaRepository<Comments, Integer> {
 
-  List<Comments> getAllByPost(Post post);
+    List<Comments> getAllByPost(Post post);
 }
