@@ -34,7 +34,7 @@ public class Posts {
     LikeService likeService;
 
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin()
     @PostMapping("/post/create")
     public ResponseEntity<String> CreateStory(HttpServletRequest request, @RequestBody StoryRequest storyRequest) {
 
