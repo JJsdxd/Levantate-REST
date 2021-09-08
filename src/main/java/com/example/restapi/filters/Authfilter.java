@@ -54,13 +54,13 @@ public class Authfilter extends GenericFilterBean {
 
 
 
-
+/*
         httpResponse.setHeader("Access-Control-Allow-Origin", httprequest.getHeader("Origin"));
         httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
         httpResponse.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
         httpResponse.setHeader("Access-Control-Max-Age", "3600");
         httpResponse.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, Authorization");
-
+*/
         chain.doFilter(request,response);
 
 

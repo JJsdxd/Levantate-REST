@@ -33,15 +33,8 @@ public class RestapiApplication {
 
     }
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("https://youthful-heyrovsky-a6b78e.netlify.app/");
-            }
-        };
-    }
+
+
 
 
 

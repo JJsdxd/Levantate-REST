@@ -28,7 +28,7 @@ public class home {
 
 
     //Returns the user name and email from the jwt token
-    @CrossOrigin(origins = "https://youthful-heyrovsky-a6b78e.netlify.app/")
+    @CrossOrigin()
     @GetMapping("/dashboard")
     public Map<String, String> dash(HttpServletRequest request) {
         int token_user_id = (Integer) request.getAttribute("userId");
