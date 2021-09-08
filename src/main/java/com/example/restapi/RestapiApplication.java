@@ -38,7 +38,7 @@ public class RestapiApplication {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://localhost:4200").allowedMethods("PUT", "DELETE",
+                registry.addMapping("/**").allowedOrigins("https://youthful-heyrovsky-a6b78e.netlify.app/").allowedMethods("PUT", "DELETE",
                         "GET", "POST");
             }
         };
