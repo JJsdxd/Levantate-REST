@@ -14,7 +14,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 public class Authfilter extends GenericFilterBean {
@@ -51,8 +50,8 @@ public class Authfilter extends GenericFilterBean {
         }
 
 
-
-        httpResponse.setHeader("Access-Control-Allow-Origin", "*");
+    
+        httpResponse.setHeader("Access-Control-Allow-Origin", httprequest.getHeader("Origin"));
         httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
        httpResponse.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
        httpResponse.setHeader("Access-Control-Max-Age", "3600");
