@@ -74,7 +74,7 @@ public class Posts {
 
     //Endpoint for creating  a new comment.
     @CrossOrigin()
-    @PostMapping("post/comment/create")
+    @PostMapping("/post/comment/create")
     public Comments CreateCom(HttpServletRequest request, @RequestBody CommentRequest commentRequest) {
 
         int token_user_id = (Integer) request.getAttribute("userId");
@@ -86,7 +86,7 @@ public class Posts {
 
     //Like / Dislike a Post.
     @CrossOrigin
-    @PostMapping("post/likes/")
+    @PostMapping("/post/likes")
     public void LikePost(HttpServletRequest request, @RequestParam int storyid) {
         int token_user_id = (Integer) request.getAttribute("userId");
         likeService.EditLike(token_user_id, storyid);
@@ -95,7 +95,7 @@ public class Posts {
 
     //Get all Recent Posts.
     @CrossOrigin(origins = "https://youthful-heyrovsky-a6b78e.netlify.app/")
-    @GetMapping("post/")
+    @GetMapping("/post")
     public Map<String, Object> GetAllPost(HttpServletRequest request) {
         List<SimplePost> post_list = postService.PostList();
         Map<String, Object> map = new HashMap<>();
