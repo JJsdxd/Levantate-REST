@@ -20,6 +20,7 @@ public class RestapiApplication {
         Authfilter authfilter = new Authfilter();
         registrationBean.setFilter(authfilter);
         registrationBean.addUrlPatterns("/post/*");
+        registrationBean.addUrlPatterns("/post");
         registrationBean.addUrlPatterns("/upload");
         registrationBean.addUrlPatterns("/profileimage");
         registrationBean.addUrlPatterns("/challenge/*");

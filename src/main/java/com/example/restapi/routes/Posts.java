@@ -85,6 +85,7 @@ public class Posts {
 
 
     //Like / Dislike a Post.
+    @CrossOrigin
     @PostMapping("post/likes/")
     public void LikePost(HttpServletRequest request, @RequestParam int storyid) {
         int token_user_id = (Integer) request.getAttribute("userId");
@@ -93,6 +94,7 @@ public class Posts {
 
 
     //Get all Recent Posts.
+    @CrossOrigin
     @GetMapping("post/")
     public Map<String, Object> GetAllPost(HttpServletRequest request) {
         List<SimplePost> post_list = postService.PostList();
