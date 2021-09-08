@@ -32,12 +32,14 @@ public class RestapiApplication {
         return registrationBean;
 
     }
+
     @Bean
     public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
+        return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/dashboard").allowedOrigins("https://youthful-heyrovsky-a6b78e.netlify.app/");
+                registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE").allowedOrigins("*")
+                        .allowedHeaders("*");
             }
         };
     }
