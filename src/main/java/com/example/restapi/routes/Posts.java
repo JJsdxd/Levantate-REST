@@ -94,7 +94,7 @@ public class Posts {
 
 
     //Get all Recent Posts.
-    @CrossOrigin
+    @CrossOrigin(origins = "https://youthful-heyrovsky-a6b78e.netlify.app/")
     @GetMapping("post/")
     public Map<String, Object> GetAllPost(HttpServletRequest request) {
         List<SimplePost> post_list = postService.PostList();
