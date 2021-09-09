@@ -26,7 +26,7 @@ public class RestapiApplication {
         FilterRegistrationBean<CorsFilter> registrationBean = new FilterRegistrationBean<>();
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.addAllowedOrigin("https://youthful-heyrovsky-a6b78e.netlify.app");
+        corsConfiguration.addAllowedOrigin("*");
         corsConfiguration.addAllowedHeader("*");
         source.registerCorsConfiguration("/**",corsConfiguration);
     registrationBean.setFilter(new CorsFilter(source));
