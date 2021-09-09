@@ -22,9 +22,8 @@ public class RestapiApplication {
         SpringApplication.run(RestapiApplication.class, args);
     }
 
-
+/*
     @Bean
-    @Order(Ordered.HIGHEST_PRECEDENCE)
     public FilterRegistrationBean<CorsFilter> corsfilter(){
         FilterRegistrationBean<CorsFilter> registrationBean = new FilterRegistrationBean<>();
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -38,7 +37,7 @@ public class RestapiApplication {
 
     return registrationBean;
     }
-
+*/
     @Bean
     public FilterRegistrationBean<Authfilter> filterRegistrationBean(){
         FilterRegistrationBean<Authfilter> registrationBean = new FilterRegistrationBean<>();
