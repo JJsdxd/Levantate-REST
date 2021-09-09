@@ -22,7 +22,7 @@ public class RestapiApplication {
         SpringApplication.run(RestapiApplication.class, args);
     }
 
-/*
+
     @Bean
     public FilterRegistrationBean<CorsFilter> corsfilter(){
         FilterRegistrationBean<CorsFilter> registrationBean = new FilterRegistrationBean<>();
@@ -37,7 +37,7 @@ public class RestapiApplication {
 
     return registrationBean;
     }
-*/
+
     @Bean
     public FilterRegistrationBean<Authfilter> filterRegistrationBean(){
         FilterRegistrationBean<Authfilter> registrationBean = new FilterRegistrationBean<>();
