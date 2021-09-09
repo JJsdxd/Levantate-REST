@@ -51,7 +51,7 @@ public class Authentication {
 
 
     //User login
-    @CrossOrigin()
+    @CrossOrigin(origins = "*")
     @PostMapping("/auth/login")
     public ResponseEntity<Map<String, String>> UserLogin(@RequestBody LoginRequest logr) {
         User loguser = new User();
