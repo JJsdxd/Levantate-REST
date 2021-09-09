@@ -15,6 +15,8 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import java.util.Arrays;
+
 @SpringBootApplication
 public class RestapiApplication {
 
@@ -30,6 +32,7 @@ public class RestapiApplication {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.addAllowedOrigin("*");
         corsConfiguration.addAllowedHeader("*");
+        corsConfiguration.setAllowedMethods(Arrays.asList("GET","POST"));
         source.registerCorsConfiguration("/**",corsConfiguration);
     registrationBean.setFilter(new CorsFilter(source));
 
