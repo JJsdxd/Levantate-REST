@@ -53,7 +53,7 @@ public class Authentication {
 
     //User login
 
-    @PostMapping("/login")
+    @PostMapping("/auth/login")
     public ResponseEntity<Map<String, String>> UserLogin(@RequestBody LoginRequest logr) {
         User loguser = new User();
         loguser.setUsername(logr.username);
