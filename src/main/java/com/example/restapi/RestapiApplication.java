@@ -33,6 +33,7 @@ public class RestapiApplication {
         corsConfiguration.addAllowedHeader("*");
         source.registerCorsConfiguration("/**",corsConfiguration);
     registrationBean.setFilter(new CorsFilter(source));
+    registrationBean.addUrlPatterns("/auth/login");
     registrationBean.setOrder(0);
 
     return registrationBean;
