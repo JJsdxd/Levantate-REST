@@ -14,11 +14,7 @@ Levantate is a online Platform designed to help teenagers with depression and an
 2. **Setting up the Database**
 
   
-   Make sure postgres is installed on your device if not , download it from [here](https://www.postgresql.org/download).
-   
-   Optionally you can install pgAdmin.
-  
-   Creat a database on your local machine.
+   Make sure postgres is installed on your device if not , download it from [here](https://www.postgresql.org/download). Optionally you can install pgAdmin. Then      creat a database on your local machine.
 
    
 4. **Update database credentials in application.properties**
