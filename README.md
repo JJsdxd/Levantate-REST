@@ -21,7 +21,7 @@ Levantate is a online Platform designed to help teenagers with depression and an
    
     update the src/main/resources/application.properties file with your database credentials.
    ```properties
-   spring.datasource.url=jjdbc:postgresql://localhost:5432/springboot
+   spring.datasource.url=jdbc:postgresql://localhost:5432/springboot
    spring.datasource.username=snape
    spring.datasource.password=password
    ```
